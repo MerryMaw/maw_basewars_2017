@@ -1,0 +1,6 @@
+"gamemode"
+{
+	"base"		"gearfox"
+	"title"		"Maw's Basewars"
+	"menusystem"	"1"
+}
