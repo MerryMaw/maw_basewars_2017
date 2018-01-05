@@ -1,5 +1,5 @@
 
 function GM:CanProperty( ply, property, ent )
-	return false
+	return ply:IsAdmin()
 	--if ( !ply:IsAdmin() && property == "remover" ) then return false end
 end
