@@ -16,6 +16,5 @@ function SQL_InitializeServerTables()
 	function a.onCompleted(s,Results)
 		print("Success")
 	end
-	
 end
 
