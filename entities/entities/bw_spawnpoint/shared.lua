@@ -5,17 +5,16 @@ ENT.PrintName		= ""
 ENT.Author			= "Maw"
 ENT.Purpose			= "Stuff"
 
-function ENT:SetupDataTables()
-end
+ENT.Untouchable 	= true
 
 
 AddSpawnableEntity(
 	{
 		Class 		= string.Explode("/",ENT.Folder)[2],
-		Name 		= "Generic Ammo Dispenser",
+		Name 		= "Spawnpoint",
 		Category 	= "Utility",
-		Model 		= "models/props_lab/reciever_cart.mdl",
+		Model 		= "models/props_junk/sawblade001a.mdl",
 		Limit 		= 1,
-		Price		= 500,
+		Price		= 2500,
 	}
 )

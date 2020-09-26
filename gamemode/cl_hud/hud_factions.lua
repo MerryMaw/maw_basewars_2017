@@ -49,6 +49,7 @@ function OpenFactionsMenu()
 		F_Confirm:SetText("Create faction")
 		F_Confirm.DoClick = function(s)
 			CreateFaction(F_Name:GetValue(),F_Pass:GetValue(),ColorAlpha(F_Color:GetColor(),255))
+			menu:SetVisible(false)
 		end
 
 
@@ -95,6 +96,7 @@ function OpenFactionsMenu()
 			
 			if (IsValid(S)) then
 				JoinFaction(S:GetColumnText(1),F_Pass:GetValue())
+				menu:SetVisible(false)
 			end
 		end
 
@@ -109,6 +111,7 @@ function OpenFactionsMenu()
 		Leave.DoClick = function(s)
 			if (LocalPlayer():HasFaction()) then
 				LeaveFaction()
+				menu:SetVisible(false)
 			end
 		end
 
