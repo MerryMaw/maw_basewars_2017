@@ -10,7 +10,7 @@ AddSpawnableEntity(
 		Class 		= string.Explode("/",ENT.Folder)[2],
 		Name 		= "Still",
 		Category 	= "Production",
-		Model 		= "models/props_c17/furnitureStove001a.mdl",
+		Model 		= "models/props/de_inferno/wine_barrel.mdl",
 		Limit 		= 1,
 		Price		= 2500,
 	}
