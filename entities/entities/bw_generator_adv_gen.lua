@@ -4,10 +4,10 @@ ENT.Base        = "bw_generator"
  
 ENT.NiceName	= "Advanced Generator"
 ENT.MaxHealth   = 250
-ENT.Model       = "models/props/gg_vietnam/vietnam_generator.mdl"
+ENT.Model       = "models/gibs/airboat_broken_engine.mdl"
 ENT.Power       = 6
  
-ENT.OffsetPos	= Vector(-20,0,30)
+ENT.OffsetPos	= Vector(5,-10,10)
 ENT.OffsetAng	= Angle(0,0,90)
 
 AddSpawnableEntity(

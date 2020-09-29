@@ -35,7 +35,8 @@ end)
 AddChatCommand("dropmoney",function(pl,str)
 	local Dat = tonumber(string.Explode(" ",str)[1])
 	
-	if (Dat and Dat > 0 and Dat < pl:GetMoney()) then
+	if (Dat and Dat > 0 and Dat <= pl:GetMoney()) then
+		pl:SetMoney(pl:GetMoney() - Dat)
 		DropMoney(Dat, pl:GetShootPos()+pl:GetAimVector()*20)
 	end
 end)

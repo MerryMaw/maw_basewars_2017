@@ -25,15 +25,6 @@ function ENT:SetupDataTables()
 	//self:NetworkVar( "Int", 0, "Level" )
 end
 
-
-
-function ENT:Think()
-	UpdatePowerGrid()
-	
-	self:NextThink(CurTime()+1)
-	return true
-end
-
 /*
 	LevelStats structure:
 	

@@ -1,23 +1,38 @@
 
-local CD = CurTime()
 
-local PowerGridRange = 300 --Ill make a local range for each generator some time maybe.
+//I will most likely coroutine this whole process later.
+local CD = CurTime()
+local min = math.min
+
+local PowerGridRange = 300^2 --Ill make a local range for each generator some time maybe.
 
 function UpdatePowerGrid()
 	if (CD > CurTime()) then return end
 	
+	//local s = SysTime()
 	--Reset everythings power consumption before appending
-	for k,v in pairs(ents.FindByClass("bw_*")) do
+	local bwEntsAll = ents.FindByClass("bw_*");
+	
+	local bwEnts = {}
+	local bwEntsGenerators = {}
+	
+	for k,v in pairs(bwEntsAll) do
+		if (v:GetClass():find("bw_generator")) then
+			bwEntsGenerators[k] = v
+		else
+			bwEnts[k] = v
+		end
+		
 		v.ConsumedPower = 0
 	end
 	
-	for _,Gen in pairs(ents.FindByClass("bw_generator*")) do
+	for _,Gen in pairs(bwEntsGenerators) do
 		local pos = Gen:GetPos()
-		for _,Ent in pairs(ents.FindByClass("bw_*")) do
-			if (!Ent:GetClass():find("bw_generator") and Ent.Power and Ent.ConsumedPower < Ent.Power and Ent:GetPos():Distance(pos) < PowerGridRange) then
+		for _,Ent in pairs(bwEnts) do
+			if (Ent.Power and Ent.ConsumedPower < Ent.Power and Ent:GetPos():DistToSqr(pos) < PowerGridRange) then
 				--if (Ent.GetPlayerOwner and Ent:GetPlayerOwner() != Gen:GetPlayerOwner()) then continue end
 				
-				local p = math.min(Gen.Power-Gen.ConsumedPower,Ent.Power-Ent.ConsumedPower)
+				local p = min(Gen.Power-Gen.ConsumedPower,Ent.Power-Ent.ConsumedPower)
 				Ent.ConsumedPower = Ent.ConsumedPower+p
 				Gen.ConsumedPower = Gen.ConsumedPower+p
 				
@@ -26,5 +41,11 @@ function UpdatePowerGrid()
 		end
 	end
 	
+	//print("Time: " .. (SysTime() - s))
 	CD = CurTime()+1
 end
+
+
+hook.Add( "Tick", "checkPowerGrid", function()
+	UpdatePowerGrid()
+end)

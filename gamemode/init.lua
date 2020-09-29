@@ -10,6 +10,7 @@ function GM:Initialize()
 	SQL_InitializeServerTables()
 	
 	resource.AddDir("materials/basewars2017")
+	resource.AddFile("resource/fonts/halflife2.ttf")
 end
 
 
@@ -31,6 +32,8 @@ function GM:PlayerLoadout( ply )
 	
 	ply:SetWalkSpeed(250)
 	ply:SetRunSpeed(350)
+	
+	ply:ConCommand("gf_config 1")
  
 	return true
 end
