@@ -7,7 +7,5 @@ end
 
 
 function GM:ForceDermaSkin()
-
 	return "Basewars Remastered"
-
 end
